@@ -1,4 +1,3 @@
-
 #include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/moduleparam.h>
@@ -51,11 +50,11 @@ void rc4(unsigned char * p, unsigned char * k, unsigned char * c,int l)
         }
 }
 
-char cipher[4096]="This is Mina's cipher";
+char cipher[4096]="Mina";
 char cipherKey [128] = "root123";
 char cipherProcKey [128]= "root123";
 char NcrptdBuff [4096];
-static int Ndctr;
+
 struct cdev charBuff[2];
 
 /*--------------------------------------------------------------------*/
@@ -163,19 +162,13 @@ int init(void){
 		
 	proc_create("cipher", 0644, NULL, &cipherProcfops);
 	proc_create("key", 0644, NULL, &keyProcfops);
-
-	Ndctr = register_chrdev_region(MKDEV(300,0),2, "cipher");
-	if (Ndctr >= 0)
-		printk(KERN_ALERT "Success\n");
-	else 
-		printk(KERN_ALERT "Failed\n");
 	
 
 	cdev_init(&charBuff[0], &cipherDevfops);
-	cdev_add (&charBuff[0], MKDEV (300,0),1);
+	cdev_add (&charBuff[0], MKDEV (240,0),1);
 
 	cdev_init(&charBuff[1], &keyDevfops);
-	cdev_add (&charBuff[1], MKDEV(300,1),1);
+	cdev_add (&charBuff[1], MKDEV(240,1),1);
 	return 0; 
 }
 
