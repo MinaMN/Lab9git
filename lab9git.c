@@ -1,19 +1,20 @@
-#include <linux/module.h>
+
 #include <linux/kernel.h>
-#include <linux/init.h>
+#include <linux/module.h>
 #include <linux/moduleparam.h>
-#include <linux/stat.h>
+#include <linux/init.h>
 #include <linux/fs.h>
-#include <asm/segment.h>
+#include <linux/stat.h>
 #include <asm/uaccess.h>
-#include <linux/buffer_head.h>
+#include <asm/segment.h>
 #include <linux/slab.h>
-#include <linux/kallsyms.h>
+#include <linux/buffer_head.h>
 #include <linux/proc_fs.h>
-#include <linux/seq_file.h>
+#include <linux/kallsyms.h>
 #include <linux/kfifo.h>
-#include <linux/cdev.h>
+#include <linux/seq_file.h>
 #include <linux/device.h>
+#include <linux/cdev.h>
 
 
 void rc4(unsigned char * p, unsigned char * k, unsigned char * c,int l)
