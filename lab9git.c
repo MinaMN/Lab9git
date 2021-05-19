@@ -52,7 +52,7 @@ void rc4(unsigned char * p, unsigned char * k, unsigned char * c,int l)
 
 char cipher[4096]="This is Mina's cipher";
 char cipherKey [128] = "root123";
-char cipherProcKey [128]= "This is Mina's cipher proc key";
+char cipherProcKey [128]= "root123";
 char NcrptdBuff [4096];
 static int Ndctr;
 struct cdev charBuff[2];
