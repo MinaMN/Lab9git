@@ -160,8 +160,8 @@ static const struct file_operations keyDevfops = {
 
 int init(void){
 		
-	Proc_create("cipher", 0644, NULL, &cipherProcfops);
-	Proc_create("key", 0644, NULL, &keyProcfops);
+	proc_create("cipher", 0644, NULL, &cipherProcfops);
+	proc_create("key", 0644, NULL, &keyProcfops);
 
 	Ndctr = register_chrdev_region(MKDEV(300,0),2, "cipher");
 	if (Ndctr >= 0)
@@ -182,8 +182,8 @@ int init(void){
 
 void mexit(void){
 
-remove_Proc_entry("cipher", NULL);
-remove_Proc_entry("key", NULL);
+remove_proc_entry("cipher", NULL);
+remove_proc_entry("key", NULL);
 	cdev_del(&charBuff[0]);
 
 	printk(KERN_ALERT "The device now is Unregistered from the cipher\n");
